@@ -2,17 +2,21 @@ package com.bowling;
 
 import java.util.ArrayList;
 
-import com.bowling.exceptions.FrameEndException;
-
-class Frame
+class Frame<E> extends ArrayList<E>
 {
-    ArrayList<Integer> tries = new ArrayList<Integer>();
+    int maxSize = 2;
 
-    public Frame() {
-        
-    }
+    // public Frame() {
+    //     this.maxSize = maxSize;
+    // }
 
-    public void addResult(int score) {
-        this.tries.add(score);
+    @Override
+    public boolean add(E value) {
+        if (this.size() >= this.maxSize) {
+            return false;
+        }
+
+        super.add(value);
+        return true;
     }
 }

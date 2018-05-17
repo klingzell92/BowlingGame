@@ -35,4 +35,17 @@ public class FrameTest extends TestCase {
         assertEquals(1, testFrame.get(0));
         assertEquals(5, testFrame.get(1));
     }
+
+    public void testFrameSum() {
+        Frame testFrame = new Frame();
+        
+        testFrame.add(1);
+        testFrame.add(5);
+ 
+        assertEquals(6, testFrame.sum);
+    }
 }
+
+
+        
+        

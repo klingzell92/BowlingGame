@@ -31,4 +31,34 @@ public class GameTest extends TestCase {
             assertEquals(2, frameScoreSize);
         }
     }
+
+    public void testGameSum() {
+        // US 4 - test compute score of the Game
+        Game g = new Game();
+
+        // Fill game with zeros
+        for (int i = 0; i < 10; i++) {
+            Frame frame = new Frame();
+            frame.add(0);
+            frame.add(0);
+            g.addFrame(frame);
+        }
+
+        // Compute total sum of the game
+        assertEquals(0, g.getGameSum());
+
+        // Fill the game with 10s this time
+
+        g = new Game();
+
+        for (int i = 0; i < 10; i++) {
+            Frame frame = new Frame();
+            frame.add(10);
+            frame.add(10);
+            g.addFrame(frame);
+        }
+
+        // Compute total sum of the game
+        assertEquals(200, g.getGameSum());
+    }
 }

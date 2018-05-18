@@ -12,11 +12,19 @@ class Game
 
     public int getGameSum() {
         int sum = 0;
-
+        int iteration = 0;
+        
         for (Frame f : this.gameFrames) {
-            sum += f.sum;
-        }
+            int frameSum = f.sum;
+            int ball1 = (Integer) f.get(0);
 
+            if(ball1 == 10 & iteration < 9 ) {
+                frameSum += gameFrames.get(iteration + 1).sum;
+            }
+            sum += frameSum;
+            iteration++;
+        }
+        System.out.print(sum);
         return sum;
     }
 }

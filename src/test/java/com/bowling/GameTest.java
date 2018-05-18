@@ -76,13 +76,37 @@ public class GameTest extends TestCase {
         g.addFrame(frame);
         for (int i = 0; i < 9; i++) {
             frame = new Frame();
-            frame.add(10);
-            frame.add(0);
+            frame.add(6);
+            frame.add(3);
             g.addFrame(frame);
         }
 
         // Check that the total sum is correct
         assertEquals(100, g.getGameSum());
+
+    }
+
+       /**
+     * Test that a game with a spare returns the correct sum
+     */
+    public void testGameSumWithSpare(){
+        // US 6
+        Game g = new Game();
+        Frame frame = new Frame();
+
+        // Fill the game with a spare first and the rest with 9s
+        frame.add(9);
+        frame.add(1);
+        g.addFrame(frame);
+        for (int i = 0; i < 9; i++) {
+            frame = new Frame();
+            frame.add(6);
+            frame.add(3);
+            g.addFrame(frame);
+        }
+
+        // Check that the total sum is correct
+        assertEquals(97, g.getGameSum());
 
     }
 }

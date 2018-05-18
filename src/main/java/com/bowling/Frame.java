@@ -12,7 +12,7 @@ class Frame extends ArrayList
             return false;
         }
 
-        if (this.sum + value  > 10) {
+        if (value  > 10) {
             return false;
         }
         

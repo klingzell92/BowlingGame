@@ -9,4 +9,14 @@ class Game
     public void addFrame(Frame f) {
         gameFrames.add(f);
     }
+
+    public int getGameSum() {
+        int sum = 0;
+
+        for (Frame f : this.gameFrames) {
+            sum += f.sum;
+        }
+
+        return sum;
+    }
 }

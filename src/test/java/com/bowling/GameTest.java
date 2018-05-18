@@ -47,18 +47,42 @@ public class GameTest extends TestCase {
         // Compute total sum of the game
         assertEquals(0, g.getGameSum());
 
-        // Fill the game with 10s this time
+        // Fill the game with 9s this time
 
         g = new Game();
 
         for (int i = 0; i < 10; i++) {
             Frame frame = new Frame();
-            frame.add(10);
-            frame.add(10);
+            frame.add(6);
+            frame.add(3);
             g.addFrame(frame);
         }
 
         // Compute total sum of the game
-        assertEquals(200, g.getGameSum());
+        assertEquals(90, g.getGameSum());
+    }
+
+    /**
+     * Test that a game with a strike returns the correct sum
+     */
+    public void testGameSumWithStrike(){
+        // US 5
+        Game g = new Game();
+        Frame frame = new Frame();
+
+        // Fill the game with a strike first and the rest with 9s
+        frame.add(10);
+        frame.add(0);
+        g.addFrame(frame);
+        for (int i = 0; i < 9; i++) {
+            frame = new Frame();
+            frame.add(10);
+            frame.add(0);
+            g.addFrame(frame);
+        }
+
+        // Check that the total sum is correct
+        assertEquals(100, g.getGameSum());
+
     }
 }

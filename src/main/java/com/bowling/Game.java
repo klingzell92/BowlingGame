@@ -18,13 +18,21 @@ class Game
             int frameSum = f.sum;
             int ball1 = (Integer) f.get(0);
 
+            // Check if the first throw is a strike
             if(ball1 == 10 & iteration < 9 ) {
+                // Add sum of the next frame to this frames sum
                 frameSum += gameFrames.get(iteration + 1).sum;
+            } 
+
+            // Check that the first throw is not a strike but the sum of the frame is 10 wich indicates that it is a spare
+            if (ball1 != 10 & frameSum == 10 & iteration < 9 ) {
+                // Add score of the first throw of the next frame to this frames sum
+                frameSum += (Integer) gameFrames.get(iteration + 1).get(0);
             }
+
             sum += frameSum;
             iteration++;
         }
-        System.out.print(sum);
         return sum;
     }
 }

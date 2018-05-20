@@ -133,7 +133,6 @@ public class GameTest extends TestCase {
         }
 
         // Check that the total sum is correct
-        System.out.print(g.getGameSum() + "\n");
         assertEquals(111, g.getGameSum());
  
         // Fill the game with a spare first and then a strike and the rest with 9s
@@ -229,7 +228,6 @@ public class GameTest extends TestCase {
            frame.add(3);
            g.addFrame(frame);
        }
-       System.out.print(g.getGameSum());
        frame = new Frame();
        frame.add(5);
        frame.add(5);
@@ -240,4 +238,33 @@ public class GameTest extends TestCase {
        // Check that the total sum is correct
        assertEquals(103, g.getGameSum());
    }
+       /** 
+    * Test that a game with multiple strikes returns the correct sum
+    */
+    public void testGameSumWithStrikeAsLastFrame(){
+        // US 11
+        Game g = new Game();
+        Frame frame = new Frame();
+ 
+        // Fill the game with a strike as the last frame and a two bonus throws
+        frame.add(8);
+        frame.add(2);
+        g.addFrame(frame);
+        for (int i = 0; i < 8; i++) {
+            frame = new Frame();
+            frame.add(6);
+            frame.add(3);
+            g.addFrame(frame);
+        }
+        frame = new Frame();
+        frame.add(10);
+        frame.add(0);
+        g.addFrame(frame);
+        frame = new Frame();
+        frame.add(7);
+        frame.add(2);
+        g.addFrame(frame);
+        // Check that the total sum is correct
+        assertEquals(107, g.getGameSum());
+    }
 }

@@ -3,6 +3,7 @@ package com.bowling;
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -266,5 +267,95 @@ public class GameTest extends TestCase {
         g.addFrame(frame);
         // Check that the total sum is correct
         assertEquals(107, g.getGameSum());
+    }
+
+    /**
+     * Test that perfect game works
+     */
+    public void testPerfectGame() {
+        // US 13
+        Game g = new Game();
+        Frame frame = new Frame();
+
+        for (int i = 0; i < 10; i ++) {
+            frame = new Frame();
+            frame.add(10);
+            frame.add(0);
+            g.addFrame(frame);
+        }
+        // Bonus throw
+        frame = new Frame();
+        frame.add(10);
+        frame.add(10);
+        g.addFrame(frame);
+
+        assertEquals(300, g.getGameSum());
+    }
+
+    public void testRealGame() {
+        // US 14
+        Game g = new Game();
+        ArrayList<Frame> frames = new ArrayList<Frame>();
+
+        Frame frame1 = new Frame();
+        frame1.add(6);
+        frame1.add(3);
+        frames.add(frame1);
+
+        Frame frame2 = new Frame();
+        frame2.add(7);
+        frame2.add(1);
+        frames.add(frame2);
+
+        Frame frame3 = new Frame();
+        frame3.add(8);
+        frame3.add(2);
+        frames.add(frame3);
+
+        Frame frame4 = new Frame();
+        frame4.add(7);
+        frame4.add(2);
+        frames.add(frame4);
+
+        Frame frame5 = new Frame();
+        frame5.add(10);
+        frame5.add(0);
+        frames.add(frame5);
+
+        Frame frame6 = new Frame();
+        frame6.add(6);
+        frame6.add(2);
+        frames.add(frame6);
+
+        Frame frame7 = new Frame();
+        frame7.add(7);
+        frame7.add(3);
+        frames.add(frame7);
+
+        Frame frame8 = new Frame();
+        frame8.add(10);
+        frame8.add(0);
+        frames.add(frame8);
+
+        Frame frame9 = new Frame();
+        frame9.add(8);
+        frame9.add(0);
+        frames.add(frame9);
+
+        Frame frame10 = new Frame();
+        frame10.add(7);
+        frame10.add(3);
+        frames.add(frame10);
+
+        Frame frame11 = new Frame();
+        frame11.add(10);
+        frames.add(frame11);
+
+        // Add frames to the game
+        for (Frame f : frames) {
+            g.addFrame(f);
+        }
+
+        assertEquals(135, g.getGameSum());
     }
 }

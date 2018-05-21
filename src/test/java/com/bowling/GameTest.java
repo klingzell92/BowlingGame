@@ -269,6 +269,74 @@ public class GameTest extends TestCase {
         assertEquals(107, g.getGameSum());
     }
 
+    public void testBonusIsAStrike() {
+        // US 12
+        Game g = new Game();
+        Frame frame = new Frame();
+        ArrayList<Frame> frames = new ArrayList<Frame>();
+
+        Frame frame1 = new Frame();
+        frame1.add(1);
+        frame1.add(5);
+        frames.add(frame1);
+
+        Frame frame2 = new Frame();
+        frame2.add(3);
+        frame2.add(6);
+        frames.add(frame2);
+
+        Frame frame3 = new Frame();
+        frame3.add(7);
+        frame3.add(2);
+        frames.add(frame3);
+
+        Frame frame4 = new Frame();
+        frame4.add(3);
+        frame4.add(6);
+        frames.add(frame4);
+
+        Frame frame5 = new Frame();
+        frame5.add(4);
+        frame5.add(4);
+        frames.add(frame5);
+
+        Frame frame6 = new Frame();
+        frame6.add(5);
+        frame6.add(3);
+        frames.add(frame6);
+
+        Frame frame7 = new Frame();
+        frame7.add(3);
+        frame7.add(3);
+        frames.add(frame7);
+
+        Frame frame8 = new Frame();
+        frame8.add(4);
+        frame8.add(5);
+        frames.add(frame8);
+
+        Frame frame9 = new Frame();
+        frame9.add(8);
+        frame9.add(1);
+        frames.add(frame9);
+
+        Frame frame10 = new Frame();
+        frame10.add(10);
+        frames.add(frame10);
+
+        Frame frame11 = new Frame();
+        frame11.add(7);
+        frame11.add(2);
+        frames.add(frame11);
+
+        // Add frames to the game
+        for (Frame f : frames) {
+            g.addFrame(f);
+        }
+
+        assertEquals(92, g.getGameSum());
+    }
+
     /**
      * Test that perfect game works
      */
@@ -292,6 +360,9 @@ public class GameTest extends TestCase {
         assertEquals(300, g.getGameSum());
     }
 
+    /**
+     * Test real game
+     */
     public void testRealGame() {
         // US 14
         Game g = new Game();
